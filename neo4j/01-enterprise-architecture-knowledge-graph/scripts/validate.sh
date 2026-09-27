@@ -29,7 +29,9 @@ assert_eq organizations "$(scalar 'MATCH (n:PublicOrganization) RETURN count(n) 
 assert_eq systems "$(scalar 'MATCH (n:GovTechSystem) RETURN count(n) AS count;')" 4
 assert_eq capabilities "$(scalar 'MATCH (n:Capability) RETURN count(n) AS count;')" 7
 assert_eq evidence "$(scalar 'MATCH (n:Evidence) RETURN count(n) AS count;')" 4
-assert_eq operates "$(scalar 'MATCH ()-[r:OPERATES]->() RETURN count(r) AS count;')" 3
+assert_eq provides "$(scalar 'MATCH ()-[r:PROVIDES]->() RETURN count(r) AS count;')" 1
+assert_eq operates "$(scalar 'MATCH ()-[r:OPERATES]->() RETURN count(r) AS count;')" 1
+assert_eq powers "$(scalar 'MATCH ()-[r:POWERS]->() RETURN count(r) AS count;')" 1
 assert_eq maintains "$(scalar 'MATCH ()-[r:MAINTAINS]->() RETURN count(r) AS count;')" 1
 assert_eq enables "$(scalar 'MATCH ()-[r:ENABLES]->() RETURN count(r) AS count;')" 10
 assert_eq documented_by "$(scalar 'MATCH ()-[r:DOCUMENTED_BY]->() RETURN count(r) AS count;')" 4
