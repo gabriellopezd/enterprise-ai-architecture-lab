@@ -2,14 +2,13 @@
 
 ## Purpose
 
-Represent a small set of real public digital systems, the organizations responsible for them, the capabilities they provide and the official evidence used to support the model.
+Represent a small set of real public digital systems, the organizations connected to them, the capabilities they provide and the official evidence used to support the model.
 
 The model is intentionally small because this is a **Cypher Fundamentals** Proof of Work.
 
 ## Node labels
 
 ### PublicOrganization
-
 Represents a real public-sector organization.
 
 Properties:
@@ -18,7 +17,6 @@ Properties:
 - `jurisdiction`
 
 ### GovTechSystem
-
 Represents a real digital government system, service or interoperability layer.
 
 Properties:
@@ -28,7 +26,6 @@ Properties:
 - `jurisdiction`
 
 ### Capability
-
 Represents a generic, reusable digital-government capability.
 
 Properties:
@@ -37,7 +34,6 @@ Properties:
 - `category`
 
 ### Evidence
-
 Represents an official public source used to support the modeled system and capability claims.
 
 Properties:
@@ -51,17 +47,22 @@ Properties:
 ## Relationships
 
 ```text
-PublicOrganization -[:OPERATES]-> GovTechSystem
-PublicOrganization -[:MAINTAINS]-> GovTechSystem
+Government Digital Service -[:PROVIDES]-> GOV.UK One Login
+U.S. General Services Administration -[:OPERATES]-> Login.gov
+Government Technology Agency of Singapore -[:POWERS]-> Singpass
+Nordic Institute for Interoperability Solutions -[:MAINTAINS]-> X-Road
+
 GovTechSystem -[:ENABLES]-> Capability
 GovTechSystem -[:DOCUMENTED_BY]-> Evidence
 ```
+
+The organization-to-system relationship types intentionally preserve the wording supported by the official sources instead of forcing all four systems into one generic operator relationship.
 
 ## Current graph
 
 ```text
 Government Digital Service
-  └─ OPERATES → GOV.UK One Login
+  └─ PROVIDES → GOV.UK One Login
                   ├─ ENABLES → Authentication
                   ├─ ENABLES → Identity Verification
                   └─ DOCUMENTED_BY → GOV.UK One Login Technical Documentation
@@ -73,12 +74,12 @@ U.S. General Services Administration
                   └─ DOCUMENTED_BY → Login.gov About Us
 
 Government Technology Agency of Singapore
-  └─ OPERATES → Singpass
-                  ├─ ENABLES → Digital Identity
-                  ├─ ENABLES → Authentication
-                  ├─ ENABLES → Digital Signature
-                  ├─ ENABLES → Consent-Based Data Sharing
-                  └─ DOCUMENTED_BY → Singpass Developer Portal
+  └─ POWERS → Singpass
+                ├─ ENABLES → Digital Identity
+                ├─ ENABLES → Authentication
+                ├─ ENABLES → Digital Signature
+                ├─ ENABLES → Consent-Based Data Sharing
+                └─ DOCUMENTED_BY → Singpass Developer Portal
 
 Nordic Institute for Interoperability Solutions
   └─ MAINTAINS → X-Road
@@ -90,7 +91,8 @@ Nordic Institute for Interoperability Solutions
 ## Design rationale
 
 - `GovTechSystem` is intentionally generic enough to represent an identity service, government platform or data-exchange layer without pretending they are equivalent products.
-- Capabilities are modeled as reusable nodes so multiple systems can point to the same capability.
+- Organization-to-system relationship types follow public-source wording where possible.
+- Capabilities are reusable nodes so multiple systems can point to the same capability.
 - Evidence is modeled explicitly so the public PoW can show provenance rather than unsupported claims.
 - The model does not reproduce the internal architecture of any of the systems.
 - No private, proprietary, employer, customer or institution-specific data is used.
