@@ -21,6 +21,7 @@ This lab develops evidence across the intersection of:
 - Operating Model Transformation
 - Architecture Decision-Making
 - Evidence-Based Delivery
+- GovTech and Digital Public Infrastructure
 
 ## Architecture domains
 
@@ -44,12 +45,12 @@ Not every Proof of Work implements every domain. The README for each artifact di
 
 ## Evidence model
 
-The learning loop for this repository is:
-
 ```text
 Learn
   ↓
-Understand the business problem
+Understand the problem
+  ↓
+Research public evidence
   ↓
 Model the architecture
   ↓
@@ -64,24 +65,30 @@ Reuse the evidence for career, portfolio and future learning
 
 ## Public / private boundary
 
-This repository contains only:
+Public PoWs should use a **global GovTech framing whenever the subject permits**, using real publicly documented systems and official sources.
 
-- generic architectural patterns;
-- synthetic or public-safe data;
+This repository contains only:
+- public-safe architectural patterns;
+- public official-source evidence or synthetic data where needed;
 - intentionally selected Proofs of Work;
 - learning evidence suitable for a professional portfolio.
 
-It does not contain proprietary product architectures, internal metamodels, confidential business logic, customer information, institutional information, credentials or private datasets.
+It does not contain proprietary product architectures, internal metamodels, confidential business logic, customer information, employer or institutional internals, credentials or private datasets.
 
 ## Current Proofs of Work
 
-### 01 — Enterprise Architecture Knowledge Graph
+### 01 — Global GovTech Systems Knowledge Graph
 
-A foundational Neo4j exercise showing how business capabilities can be traced to supporting applications and technologies.
+A foundational Neo4j / Cypher exercise representing real public digital systems as a graph of:
 
-It demonstrates a simple transformation-architecture question:
+```text
+PublicOrganization
+→ GovTechSystem
+→ Capability
+→ Official Evidence
+```
 
-> How can an organization understand the relationship between what the business needs to do and the applications and technologies that enable it?
+Current examples include GOV.UK One Login, Login.gov, Singpass and X-Road.
 
 Path:
 
@@ -89,15 +96,16 @@ Path:
 
 ## Progression
 
-Future Proofs of Work may progressively extend the lab into areas such as:
+Future Proofs of Work may progressively extend the lab into:
 
 - graph data modeling;
+- digital public infrastructure;
 - architecture dependency analysis;
 - data and knowledge architecture;
+- interoperability and API architecture;
 - cloud and platform architecture;
 - AI and agentic architectures;
 - GraphRAG and enterprise knowledge;
-- integration and API architecture;
 - security and governance;
 - architecture decision records;
 - observability and operational resilience;
