@@ -1,222 +1,106 @@
-# Neo4j Fundamentals Proof of Work 001
-## Enterprise Architecture Knowledge Graph
+# Neo4j / Cypher Fundamentals Proof of Work 001
+## Global GovTech Systems Knowledge Graph
 
-This public Proof of Work demonstrates foundational Neo4j and Cypher skills through a small, synthetic Enterprise Architecture knowledge graph.
+This public Proof of Work demonstrates foundational Neo4j and Cypher skills through a small, evidence-backed knowledge graph of **real public digital systems**.
 
-Its broader purpose is to connect technical learning with the professional practice of an **Enterprise AI Architect / Digital Transformation Architect**.
+The goal is to connect technical learning with the professional practice of an **Enterprise AI Architect / Digital Transformation Architect**, using a global GovTech lens.
 
-> **Privacy boundary:** this example is intentionally generic and uses fictitious data. It does not represent the architecture, metamodel, data model, business logic or implementation of any proprietary product.
+> **Public-safe boundary:** this artifact uses only publicly available information from official sources. It does not represent or disclose any proprietary product, employer architecture, institutional environment, private dataset, customer information, internal metamodel, confidential business logic or non-public government information.
 
-## Business problem
+## Why GovTech
 
-Organizations often manage business capabilities, applications and technologies in separate inventories.
+Public digital infrastructure and shared government platforms are strong graph-modeling examples because they connect:
 
-That makes simple transformation questions harder to answer:
+- public organizations;
+- digital systems and platforms;
+- reusable capabilities;
+- official documentation and evidence.
 
-- Which applications support a business capability?
-- Which technologies do those applications depend on?
-- If an application or technology changes, what part of the business may be affected?
-- How can architecture information become traceable instead of remaining as disconnected lists?
+This PoW intentionally avoids country-specific market analysis and focuses on globally understandable GovTech patterns.
 
-This PoW models a first, intentionally small version of that problem.
+## Real systems modeled
 
-## Business value demonstrated
+The graph uses four real, publicly documented systems:
 
-The graph creates traceability from **business need to technology enablement**:
+1. **GOV.UK One Login** — authentication and identity verification for UK government services.
+2. **Login.gov** — authentication and identity verification for participating U.S. government services.
+3. **Singpass** — Singapore's trusted digital identity, including authentication, digital signing and consent-based data sharing through Myinfo.
+4. **X-Road** — an open-source, secure and interoperable data exchange layer maintained by NIIS.
+
+Official source references are documented in `sources/official-sources.md`.
+
+## Architecture question
+
+> How can public organizations, digital systems, reusable capabilities and official evidence be represented as a traceable graph?
+
+## Graph model
 
 ```text
-Business Capability
+(:PublicOrganization)
+       | PROVIDES / OPERATES / POWERS / MAINTAINS
+       v
+(:GovTechSystem)
+       | ENABLES
+       v
+(:Capability)
+
+(:GovTechSystem)-[:DOCUMENTED_BY]->(:Evidence)
+```
+
+This creates a simple line of sight:
+
+```text
+Public organization
         ↓
-Supporting Application
+GovTech system
         ↓
-Enabling Technology
-```
-
-This structure can support future architecture practices such as dependency analysis, impact assessment, transformation planning, technology rationalization and architecture governance.
-
-Those advanced capabilities are architectural extensions; they are **not implemented in this Fundamentals PoW**.
-
-## Architecture view
-
-```text
-(:Organization)
-      |
-      | HAS_CAPABILITY
-      v
-(:BusinessCapability)
-      |
-      | SUPPORTED_BY
-      v
-(:Application)
-      |
-      | USES
-      v
-(:Technology)
-```
-
-## Architecture domains
-
-### Business Architecture — implemented at foundational level
-
-The PoW represents:
-
-- an organization;
-- business capabilities;
-- the relationship between those capabilities and supporting applications.
-
-Architectural question:
-
-> What technology-enabled applications support what the organization needs to do?
-
-### Data & Knowledge Architecture — implemented at foundational level
-
-Neo4j represents architecture information as connected entities and relationships rather than isolated records.
-
-This introduces:
-
-- semantic relationships;
-- graph-based knowledge representation;
-- traceability across architecture objects.
-
-It does **not** yet implement ontology management, enterprise semantics, data governance or production knowledge-graph patterns.
-
-### Application Architecture — implemented at foundational level
-
-Applications are modeled as architecture building blocks that support business capabilities.
-
-The PoW demonstrates:
-
-- application-to-capability relationships;
-- application criticality as a simple property;
-- traversal from business capability to application.
-
-It does not yet model application portfolios, lifecycle, ownership, interfaces or service decomposition.
-
-### Technology Architecture — implemented at foundational level
-
-Technologies are linked to the applications that use them.
-
-This allows a basic line of sight from:
-
-```text
-Business
-→ Capability
-→ Application
-→ Technology
-```
-
-It does not yet perform lifecycle, obsolescence, standards, cost or infrastructure analysis.
-
-### Integration Architecture — architectural relevance only
-
-The current graph does not model interfaces, APIs, events or integration flows.
-
-However, the same graph approach could later represent:
-
-```text
-Application
-→ INTEGRATES_WITH
-→ Application
-```
-
-or API, event and data-flow dependencies.
-
-### AI Architecture — architectural relevance only
-
-This PoW is not an AI solution.
-
-Its relevance to Enterprise AI Architecture is that graph-structured enterprise knowledge can later support areas such as:
-
-- enterprise knowledge retrieval;
-- GraphRAG;
-- architecture copilots;
-- contextual AI reasoning;
-- dependency-aware agents.
-
-None of those capabilities are claimed as implemented here.
-
-### Cloud & Platform Architecture — partial implementation
-
-Docker provides a reproducible local execution environment for Neo4j.
-
-This demonstrates a basic platform-engineering principle:
-
-> architecture evidence should be reproducible, not only documented.
-
-The PoW does not yet implement cloud deployment, scalability, high availability or platform operations.
-
-### Security Architecture — foundational consideration
-
-The public artifact:
-
-- uses synthetic data;
-- contains no real credentials;
-- separates public learning evidence from private or proprietary architecture.
-
-It does not yet implement identity, authorization, encryption, threat modeling or security controls.
-
-### Governance & Risk — foundational consideration
-
-The PoW introduces:
-
-- explicit scope;
-- privacy boundaries;
-- deterministic validation;
-- separation between implemented capabilities and future possibilities.
-
-This supports evidence-based architecture governance without overstating maturity.
-
-### Transformation Architecture — architectural relevance
-
-At business level, the exercise demonstrates the beginning of a transformation map:
-
-```text
-Business capability
+Digital capability
         ↓
-Application dependency
-        ↓
-Technology dependency
+Official evidence
 ```
 
-A more mature version could help organizations assess transformation impacts, modernization priorities and technology dependencies.
+## Implemented scope
 
-That transformation analysis is a future extension, not part of the current implementation.
+### Public organizations
+- Government Digital Service
+- U.S. General Services Administration
+- Government Technology Agency of Singapore
+- Nordic Institute for Interoperability Solutions
 
-### Delivery & Operations — implemented at foundational level
+### GovTech systems
+- GOV.UK One Login
+- Login.gov
+- Singpass
+- X-Road
 
-The artifact includes:
+### Capabilities
+- Authentication
+- Identity Verification
+- Digital Identity
+- Digital Signature
+- Consent-Based Data Sharing
+- Secure Data Exchange
+- Interoperability
 
-- Docker-based reproducibility;
-- automated GitHub Actions validation;
-- deterministic graph validation.
-
-This makes the learning evidence executable and independently verifiable.
-
-## Synthetic scenario
-
-A fictitious organization called **Northstar Services** has three business capabilities supported by four applications and four technologies.
-
-Expected graph:
-
-- 1 Organization
-- 3 BusinessCapability nodes
-- 4 Application nodes
-- 4 Technology nodes
-- 3 HAS_CAPABILITY relationships
-- 4 SUPPORTED_BY relationships
-- 5 USES relationships
+### Evidence
+One official public source is linked to each modeled system.
 
 ## Learning goals
 
-This exercise demonstrates:
+This exercise demonstrates the Cypher Fundamentals concepts covered in Neo4j GraphAcademy:
 
-- property graph modeling;
 - nodes, labels, relationships and properties;
-- `MERGE` and `SET` for deterministic creation/update;
-- `MATCH`, `WHERE`, `RETURN` and `LIMIT` for querying;
-- basic traversal across several node types;
+- `MATCH`, `WHERE`, `RETURN` and `LIMIT`;
+- `MERGE` for deterministic node and relationship creation;
+- `SET` for properties;
+- `ON CREATE` and `ON MATCH`;
+- `REMOVE`;
+- `DELETE` and `DETACH DELETE`;
+- relationship direction;
 - reproducibility with Docker;
-- automated validation with GitHub Actions.
+- deterministic validation with shell scripts.
+
+The destructive/update patterns are isolated in `cypher/05-course-patterns.cypher` and are not required to mutate the evidence graph.
 
 ## Structure
 
@@ -226,11 +110,14 @@ This exercise demonstrates:
 ├── docker-compose.yml
 ├── model/
 │   └── graph-model.md
+├── sources/
+│   └── official-sources.md
 ├── cypher/
 │   ├── 01-schema.cypher
 │   ├── 02-data.cypher
 │   ├── 03-queries.cypher
-│   └── 04-validation.cypher
+│   ├── 04-validation.cypher
+│   └── 05-course-patterns.cypher
 ├── scripts/
 │   ├── run.sh
 │   └── validate.sh
@@ -253,32 +140,44 @@ chmod +x scripts/*.sh
 ./scripts/run.sh
 ```
 
-The script starts Neo4j, loads the synthetic graph, runs sample queries and validates the expected graph deterministically.
+The script starts Neo4j, loads the curated public-source graph, runs sample Cypher queries and validates the expected graph deterministically.
 
-## Example architecture query
+## Example query 1 — systems that enable authentication
 
 ```cypher
-MATCH (c:BusinessCapability)-[:SUPPORTED_BY]->(a:Application)-[:USES]->(t:Technology)
-WHERE a.criticality = 'HIGH'
-RETURN c.name AS capability, a.name AS application, collect(t.name) AS technologies
+MATCH (s:GovTechSystem)-[:ENABLES]->(c:Capability)
+WHERE c.name = 'Authentication'
+RETURN s.name AS system, s.jurisdiction AS jurisdiction
+ORDER BY system
 LIMIT 10;
 ```
 
-At business level, this asks:
+## Example query 2 — trace system to official evidence
 
-> Which technologies are used by high-criticality applications supporting business capabilities?
+```cypher
+MATCH (o:PublicOrganization)-[:OPERATES]->(s:GovTechSystem)-[:DOCUMENTED_BY]->(e:Evidence)
+RETURN o.name AS organization,
+       s.name AS system,
+       e.title AS source,
+       e.url AS url
+ORDER BY system
+LIMIT 10;
+```
 
 ## Expected validation
 
 ```text
-PASS organizations=1
-PASS capabilities=3
-PASS applications=4
-PASS technologies=4
-PASS has_capability=3
-PASS supported_by=4
-PASS uses=5
-PASS required_keywords=MATCH,WHERE,RETURN,MERGE,SET,LIMIT
+PASS organizations=4
+PASS systems=4
+PASS capabilities=7
+PASS evidence=4
+PASS provides=1
+PASS operates=1
+PASS powers=1
+PASS maintains=1
+PASS enables=10
+PASS documented_by=4
+PASS required_patterns=MATCH,WHERE,RETURN,MERGE,SET,REMOVE,DELETE,DETACH DELETE,ON CREATE,ON MATCH,LIMIT
 VALIDATION_RESULT=PASS
 ```
 
@@ -287,43 +186,52 @@ VALIDATION_RESULT=PASS
 This artifact supports a **foundational** claim in:
 
 - Neo4j property graphs;
-- basic Cypher;
-- simple graph modeling;
-- business-to-technology traceability;
-- architecture-oriented thinking;
+- foundational Cypher;
+- graph-based representation of real GovTech systems;
+- capability traceability;
+- evidence-backed modeling;
+- architecture-oriented reasoning;
 - reproducible technical experimentation.
 
-## What this does not yet prove
+## What this does not prove
 
 It does not claim:
 
 - advanced Neo4j expertise;
 - production knowledge graphs;
-- GraphRAG;
-- AI agents;
-- automated architecture recommendations;
-- enterprise-scale transformation analysis;
+- production GraphRAG;
+- production AI agents;
+- enterprise-scale graph operations;
 - production cloud architecture;
-- enterprise security implementation;
-- performance engineering;
-- production database operations.
+- production security engineering;
+- completeness of the modeled public systems.
+
+## Validation gate
+
+This PoW is considered verified only when the repository CI executes the graph end to end and reports `VALIDATION_RESULT=PASS`. Static expected values are not treated as runtime evidence.
+
+## Claims boundary
+
+The systems and capabilities are modeled only to the extent supported by the official sources listed in this repository. The graph is an educational abstraction, not an authoritative architecture of those government platforms.
 
 ## Professional capability signal
 
-The value of this PoW is not only the use of Neo4j.
+The value of the PoW is not only the use of Neo4j.
 
-It demonstrates the beginning of an Enterprise AI / Digital Transformation architecture mindset:
+It demonstrates a repeatable professional pattern:
 
 ```text
-Business need
+Public evidence
      ↓
-Architecture model
+Architecture abstraction
      ↓
-Technology implementation
+Graph model
+     ↓
+Cypher implementation
      ↓
 Validation
      ↓
-Evidence
+Reproducible Proof of Work
 ```
 
-The objective of future PoWs in this repository is to progressively deepen that chain across enterprise, data, application, integration, cloud, security and AI architecture domains.
+Future PoWs in this lab should continue using a **global GovTech + public evidence + privacy-safe** framing whenever the subject permits.
