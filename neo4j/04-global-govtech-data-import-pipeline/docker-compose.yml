@@ -12,7 +12,7 @@ services:
       - "7687:7687"
     volumes:
       - neo4j_import_pow004_data:/data
-      - ./data/source:/var/lib/neo4j/import:ro
+      - ./data/source:/var/lib/neo4j/import
 
 volumes:
   neo4j_import_pow004_data:
