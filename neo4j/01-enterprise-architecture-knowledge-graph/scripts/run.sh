@@ -29,7 +29,7 @@ fi
 echo "[PoW] Applying schema..."
 docker compose exec -T neo4j cypher-shell -u neo4j -p "$NEO4J_PASSWORD" < cypher/01-schema.cypher
 
-echo "[PoW] Loading synthetic data..."
+echo "[PoW] Loading curated public-source GovTech graph..."
 docker compose exec -T neo4j cypher-shell -u neo4j -p "$NEO4J_PASSWORD" < cypher/02-data.cypher
 
 echo "[PoW] Running sample queries..."
