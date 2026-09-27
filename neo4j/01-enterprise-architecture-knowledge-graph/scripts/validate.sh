@@ -25,21 +25,31 @@ assert_eq() {
   echo "PASS $name=$actual" | tee -a "$OUTPUT"
 }
 
-assert_eq organizations "$(scalar 'MATCH (n:Organization) RETURN count(n) AS count;')" 1
-assert_eq capabilities "$(scalar 'MATCH (n:BusinessCapability) RETURN count(n) AS count;')" 3
-assert_eq applications "$(scalar 'MATCH (n:Application) RETURN count(n) AS count;')" 4
-assert_eq technologies "$(scalar 'MATCH (n:Technology) RETURN count(n) AS count;')" 4
-assert_eq has_capability "$(scalar 'MATCH ()-[r:HAS_CAPABILITY]->() RETURN count(r) AS count;')" 3
-assert_eq supported_by "$(scalar 'MATCH ()-[r:SUPPORTED_BY]->() RETURN count(r) AS count;')" 4
-assert_eq uses "$(scalar 'MATCH ()-[r:USES]->() RETURN count(r) AS count;')" 5
+assert_eq organizations "$(scalar 'MATCH (n:PublicOrganization) RETURN count(n) AS count;')" 4
+assert_eq systems "$(scalar 'MATCH (n:GovTechSystem) RETURN count(n) AS count;')" 4
+assert_eq capabilities "$(scalar 'MATCH (n:Capability) RETURN count(n) AS count;')" 7
+assert_eq evidence "$(scalar 'MATCH (n:Evidence) RETURN count(n) AS count;')" 4
+assert_eq provides "$(scalar 'MATCH ()-[r:PROVIDES]->() RETURN count(r) AS count;')" 1
+assert_eq operates "$(scalar 'MATCH ()-[r:OPERATES]->() RETURN count(r) AS count;')" 1
+assert_eq powers "$(scalar 'MATCH ()-[r:POWERS]->() RETURN count(r) AS count;')" 1
+assert_eq maintains "$(scalar 'MATCH ()-[r:MAINTAINS]->() RETURN count(r) AS count;')" 1
+assert_eq enables "$(scalar 'MATCH ()-[r:ENABLES]->() RETURN count(r) AS count;')" 10
+assert_eq documented_by "$(scalar 'MATCH ()-[r:DOCUMENTED_BY]->() RETURN count(r) AS count;')" 4
 
 all_cypher="$(cat cypher/*.cypher)"
-for keyword in MATCH WHERE RETURN MERGE SET LIMIT; do
+for keyword in MATCH WHERE RETURN MERGE SET REMOVE DELETE LIMIT; do
   if ! grep -Eq "\\b$keyword\\b" <<< "$all_cypher"; then
     echo "FAIL missing_keyword=$keyword" | tee -a "$OUTPUT"
     exit 1
   fi
 done
 
-echo "PASS required_keywords=MATCH,WHERE,RETURN,MERGE,SET,LIMIT" | tee -a "$OUTPUT"
+for pattern in "DETACH DELETE" "ON CREATE" "ON MATCH"; do
+  if ! grep -Fq "$pattern" <<< "$all_cypher"; then
+    echo "FAIL missing_pattern=$pattern" | tee -a "$OUTPUT"
+    exit 1
+  fi
+done
+
+echo "PASS required_patterns=MATCH,WHERE,RETURN,MERGE,SET,REMOVE,DELETE,DETACH DELETE,ON CREATE,ON MATCH,LIMIT" | tee -a "$OUTPUT"
 echo "VALIDATION_RESULT=PASS" | tee -a "$OUTPUT"
