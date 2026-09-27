@@ -1,81 +1,150 @@
-// Organization
-MERGE (o:Organization {id: 'ORG-001'})
-SET o.name = 'Northstar Services',
-    o.sector = 'Fictitious Services';
+// PUBLIC ORGANIZATIONS
+MERGE (gds:PublicOrganization {id: 'ORG-001'})
+SET gds.name = 'Government Digital Service',
+    gds.jurisdiction = 'United Kingdom';
 
-// Business capabilities
-MERGE (c1:BusinessCapability {id: 'CAP-001'})
-SET c1.name = 'Customer Service',
-    c1.maturity = 'DEFINED';
+MERGE (gsa:PublicOrganization {id: 'ORG-002'})
+SET gsa.name = 'U.S. General Services Administration',
+    gsa.jurisdiction = 'United States';
 
-MERGE (c2:BusinessCapability {id: 'CAP-002'})
-SET c2.name = 'Data Analytics',
-    c2.maturity = 'MANAGED';
+MERGE (govtech:PublicOrganization {id: 'ORG-003'})
+SET govtech.name = 'Government Technology Agency of Singapore',
+    govtech.jurisdiction = 'Singapore';
 
-MERGE (c3:BusinessCapability {id: 'CAP-003'})
-SET c3.name = 'Case Management',
-    c3.maturity = 'DEFINED';
+MERGE (niis:PublicOrganization {id: 'ORG-004'})
+SET niis.name = 'Nordic Institute for Interoperability Solutions',
+    niis.jurisdiction = 'Cross-border / international';
 
-// Applications
-MERGE (a1:Application {id: 'APP-001'})
-SET a1.name = 'Service Portal',
-    a1.criticality = 'HIGH';
+// GOVTECH SYSTEMS
+MERGE (oneLogin:GovTechSystem {id: 'SYS-001'})
+SET oneLogin.name = 'GOV.UK One Login',
+    oneLogin.systemType = 'Government sign-in and identity service',
+    oneLogin.jurisdiction = 'United Kingdom';
 
-MERGE (a2:Application {id: 'APP-002'})
-SET a2.name = 'Analytics Hub',
-    a2.criticality = 'MEDIUM';
+MERGE (loginGov:GovTechSystem {id: 'SYS-002'})
+SET loginGov.name = 'Login.gov',
+    loginGov.systemType = 'Government sign-in and identity service',
+    loginGov.jurisdiction = 'United States';
 
-MERGE (a3:Application {id: 'APP-003'})
-SET a3.name = 'Case Tracker',
-    a3.criticality = 'HIGH';
+MERGE (singpass:GovTechSystem {id: 'SYS-003'})
+SET singpass.name = 'Singpass',
+    singpass.systemType = 'National digital identity',
+    singpass.jurisdiction = 'Singapore';
 
-MERGE (a4:Application {id: 'APP-004'})
-SET a4.name = 'Integration Gateway',
-    a4.criticality = 'HIGH';
+MERGE (xroad:GovTechSystem {id: 'SYS-004'})
+SET xroad.name = 'X-Road',
+    xroad.systemType = 'Distributed data exchange layer',
+    xroad.jurisdiction = 'Cross-border / international';
 
-// Technologies
-MERGE (t1:Technology {id: 'TECH-001'})
-SET t1.name = 'PostgreSQL',
-    t1.category = 'Database';
+// CAPABILITIES
+MERGE (authentication:Capability {id: 'CAP-001'})
+SET authentication.name = 'Authentication',
+    authentication.category = 'Digital Identity';
 
-MERGE (t2:Technology {id: 'TECH-002'})
-SET t2.name = 'Node.js',
-    t2.category = 'Runtime';
+MERGE (identityVerification:Capability {id: 'CAP-002'})
+SET identityVerification.name = 'Identity Verification',
+    identityVerification.category = 'Digital Identity';
 
-MERGE (t3:Technology {id: 'TECH-003'})
-SET t3.name = 'Neo4j',
-    t3.category = 'Graph Database';
+MERGE (digitalIdentity:Capability {id: 'CAP-003'})
+SET digitalIdentity.name = 'Digital Identity',
+    digitalIdentity.category = 'Digital Identity';
 
-MERGE (t4:Technology {id: 'TECH-004'})
-SET t4.name = 'Docker',
-    t4.category = 'Container';
+MERGE (digitalSignature:Capability {id: 'CAP-004'})
+SET digitalSignature.name = 'Digital Signature',
+    digitalSignature.category = 'Digital Trust';
 
-// Organization → capabilities
-MATCH (o:Organization {id: 'ORG-001'})
-MATCH (c:BusinessCapability)
-MERGE (o)-[:HAS_CAPABILITY]->(c);
+MERGE (consentData:Capability {id: 'CAP-005'})
+SET consentData.name = 'Consent-Based Data Sharing',
+    consentData.category = 'Data Exchange';
 
-// Capabilities → applications
-MATCH (c1:BusinessCapability {id: 'CAP-001'}), (a1:Application {id: 'APP-001'})
-MERGE (c1)-[:SUPPORTED_BY]->(a1);
+MERGE (secureExchange:Capability {id: 'CAP-006'})
+SET secureExchange.name = 'Secure Data Exchange',
+    secureExchange.category = 'Interoperability';
 
-MATCH (c2:BusinessCapability {id: 'CAP-002'}), (a2:Application {id: 'APP-002'})
-MERGE (c2)-[:SUPPORTED_BY]->(a2);
+MERGE (interoperability:Capability {id: 'CAP-007'})
+SET interoperability.name = 'Interoperability',
+    interoperability.category = 'Interoperability';
 
-MATCH (c3:BusinessCapability {id: 'CAP-003'}), (a3:Application {id: 'APP-003'}), (a4:Application {id: 'APP-004'})
-MERGE (c3)-[:SUPPORTED_BY]->(a3)
-MERGE (c3)-[:SUPPORTED_BY]->(a4);
+// OFFICIAL EVIDENCE
+MERGE (e1:Evidence {id: 'EVID-001'})
+SET e1.title = 'GOV.UK One Login Technical Documentation',
+    e1.publisher = 'Government Digital Service',
+    e1.url = 'https://docs.sign-in.service.gov.uk/',
+    e1.sourceType = 'Official documentation',
+    e1.retrievedOn = '2026-09-27';
 
-// Applications → technologies
-MATCH (a1:Application {id: 'APP-001'}), (t1:Technology {id: 'TECH-001'}), (t2:Technology {id: 'TECH-002'})
-MERGE (a1)-[:USES]->(t1)
-MERGE (a1)-[:USES]->(t2);
+MERGE (e2:Evidence {id: 'EVID-002'})
+SET e2.title = 'Login.gov — About Us',
+    e2.publisher = 'Login.gov / U.S. General Services Administration',
+    e2.url = 'https://www.login.gov/about-us/',
+    e2.sourceType = 'Official website',
+    e2.retrievedOn = '2026-09-27';
 
-MATCH (a2:Application {id: 'APP-002'}), (t3:Technology {id: 'TECH-003'})
-MERGE (a2)-[:USES]->(t3);
+MERGE (e3:Evidence {id: 'EVID-003'})
+SET e3.title = 'Singpass Developer Portal',
+    e3.publisher = 'Government Technology Agency of Singapore',
+    e3.url = 'https://developer.singpass.gov.sg/',
+    e3.sourceType = 'Official developer documentation',
+    e3.retrievedOn = '2026-09-27';
 
-MATCH (a3:Application {id: 'APP-003'}), (t1:Technology {id: 'TECH-001'})
-MERGE (a3)-[:USES]->(t1);
+MERGE (e4:Evidence {id: 'EVID-004'})
+SET e4.title = 'X-Road Technology Overview',
+    e4.publisher = 'X-Road / Nordic Institute for Interoperability Solutions',
+    e4.url = 'https://x-road.global/x-road-technology-overview',
+    e4.sourceType = 'Official product documentation',
+    e4.retrievedOn = '2026-09-27';
 
-MATCH (a4:Application {id: 'APP-004'}), (t4:Technology {id: 'TECH-004'})
-MERGE (a4)-[:USES]->(t4);
+// ORGANIZATION → SYSTEM
+MATCH (gds:PublicOrganization {id: 'ORG-001'}), (oneLogin:GovTechSystem {id: 'SYS-001'})
+MERGE (gds)-[:PROVIDES]->(oneLogin);
+
+MATCH (gsa:PublicOrganization {id: 'ORG-002'}), (loginGov:GovTechSystem {id: 'SYS-002'})
+MERGE (gsa)-[:OPERATES]->(loginGov);
+
+MATCH (govtech:PublicOrganization {id: 'ORG-003'}), (singpass:GovTechSystem {id: 'SYS-003'})
+MERGE (govtech)-[:POWERS]->(singpass);
+
+MATCH (niis:PublicOrganization {id: 'ORG-004'}), (xroad:GovTechSystem {id: 'SYS-004'})
+MERGE (niis)-[:MAINTAINS]->(xroad);
+
+// SYSTEM → CAPABILITY
+MATCH (s:GovTechSystem {id: 'SYS-001'}),
+      (authentication:Capability {id: 'CAP-001'}),
+      (identityVerification:Capability {id: 'CAP-002'})
+MERGE (s)-[:ENABLES]->(authentication)
+MERGE (s)-[:ENABLES]->(identityVerification);
+
+MATCH (s:GovTechSystem {id: 'SYS-002'}),
+      (authentication:Capability {id: 'CAP-001'}),
+      (identityVerification:Capability {id: 'CAP-002'})
+MERGE (s)-[:ENABLES]->(authentication)
+MERGE (s)-[:ENABLES]->(identityVerification);
+
+MATCH (s:GovTechSystem {id: 'SYS-003'}),
+      (digitalIdentity:Capability {id: 'CAP-003'}),
+      (authentication:Capability {id: 'CAP-001'}),
+      (digitalSignature:Capability {id: 'CAP-004'}),
+      (consentData:Capability {id: 'CAP-005'})
+MERGE (s)-[:ENABLES]->(digitalIdentity)
+MERGE (s)-[:ENABLES]->(authentication)
+MERGE (s)-[:ENABLES]->(digitalSignature)
+MERGE (s)-[:ENABLES]->(consentData);
+
+MATCH (s:GovTechSystem {id: 'SYS-004'}),
+      (secureExchange:Capability {id: 'CAP-006'}),
+      (interoperability:Capability {id: 'CAP-007'})
+MERGE (s)-[:ENABLES]->(secureExchange)
+MERGE (s)-[:ENABLES]->(interoperability);
+
+// SYSTEM → EVIDENCE
+MATCH (s:GovTechSystem {id: 'SYS-001'}), (e:Evidence {id: 'EVID-001'})
+MERGE (s)-[:DOCUMENTED_BY]->(e);
+
+MATCH (s:GovTechSystem {id: 'SYS-002'}), (e:Evidence {id: 'EVID-002'})
+MERGE (s)-[:DOCUMENTED_BY]->(e);
+
+MATCH (s:GovTechSystem {id: 'SYS-003'}), (e:Evidence {id: 'EVID-003'})
+MERGE (s)-[:DOCUMENTED_BY]->(e);
+
+MATCH (s:GovTechSystem {id: 'SYS-004'}), (e:Evidence {id: 'EVID-004'})
+MERGE (s)-[:DOCUMENTED_BY]->(e);

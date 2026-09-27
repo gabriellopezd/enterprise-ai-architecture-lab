@@ -1,47 +1,98 @@
-# Graph Model
+# Graph Model — Global GovTech Systems
+
+## Purpose
+
+Represent a small set of real public digital systems, the organizations connected to them, the capabilities they provide and the official evidence used to support the model.
+
+The model is intentionally small because this is a **Cypher Fundamentals** Proof of Work.
 
 ## Node labels
 
-### Organization
-Represents a fictitious organization.
+### PublicOrganization
+Represents a real public-sector organization.
 
 Properties:
 - `id`
 - `name`
-- `sector`
+- `jurisdiction`
 
-### BusinessCapability
-Represents a generic organizational capability.
-
-Properties:
-- `id`
-- `name`
-- `maturity`
-
-### Application
-Represents a generic software application.
+### GovTechSystem
+Represents a real digital government system, service or interoperability layer.
 
 Properties:
 - `id`
 - `name`
-- `criticality`
+- `systemType`
+- `jurisdiction`
 
-### Technology
-Represents a generic technology used by an application.
+### Capability
+Represents a generic, reusable digital-government capability.
 
 Properties:
 - `id`
 - `name`
 - `category`
 
+### Evidence
+Represents an official public source used to support the modeled system and capability claims.
+
+Properties:
+- `id`
+- `title`
+- `publisher`
+- `url`
+- `sourceType`
+- `retrievedOn`
+
 ## Relationships
 
 ```text
-Organization -[:HAS_CAPABILITY]-> BusinessCapability
-BusinessCapability -[:SUPPORTED_BY]-> Application
-Application -[:USES]-> Technology
+Government Digital Service -[:PROVIDES]-> GOV.UK One Login
+U.S. General Services Administration -[:OPERATES]-> Login.gov
+Government Technology Agency of Singapore -[:POWERS]-> Singpass
+Nordic Institute for Interoperability Solutions -[:MAINTAINS]-> X-Road
+
+GovTechSystem -[:ENABLES]-> Capability
+GovTechSystem -[:DOCUMENTED_BY]-> Evidence
+```
+
+The organization-to-system relationship types intentionally preserve the wording supported by the official sources instead of forcing all four systems into one generic operator relationship.
+
+## Current graph
+
+```text
+Government Digital Service
+  └─ PROVIDES → GOV.UK One Login
+                  ├─ ENABLES → Authentication
+                  ├─ ENABLES → Identity Verification
+                  └─ DOCUMENTED_BY → GOV.UK One Login Technical Documentation
+
+U.S. General Services Administration
+  └─ OPERATES → Login.gov
+                  ├─ ENABLES → Authentication
+                  ├─ ENABLES → Identity Verification
+                  └─ DOCUMENTED_BY → Login.gov About Us
+
+Government Technology Agency of Singapore
+  └─ POWERS → Singpass
+                ├─ ENABLES → Digital Identity
+                ├─ ENABLES → Authentication
+                ├─ ENABLES → Digital Signature
+                ├─ ENABLES → Consent-Based Data Sharing
+                └─ DOCUMENTED_BY → Singpass Developer Portal
+
+Nordic Institute for Interoperability Solutions
+  └─ MAINTAINS → X-Road
+                   ├─ ENABLES → Secure Data Exchange
+                   ├─ ENABLES → Interoperability
+                   └─ DOCUMENTED_BY → X-Road Technology Overview
 ```
 
 ## Design rationale
 
-The model is intentionally small. It is designed to demonstrate the mechanics of a property graph without exposing proprietary enterprise-architecture logic or product-specific concepts.
+- `GovTechSystem` is intentionally generic enough to represent an identity service, government platform or data-exchange layer without pretending they are equivalent products.
+- Organization-to-system relationship types follow public-source wording where possible.
+- Capabilities are reusable nodes so multiple systems can point to the same capability.
+- Evidence is modeled explicitly so the public PoW can show provenance rather than unsupported claims.
+- The model does not reproduce the internal architecture of any of the systems.
+- No private, proprietary, employer, customer or institution-specific data is used.

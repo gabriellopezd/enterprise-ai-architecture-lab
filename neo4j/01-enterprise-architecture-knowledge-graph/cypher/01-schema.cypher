@@ -1,15 +1,15 @@
-CREATE CONSTRAINT organization_id_unique IF NOT EXISTS
-FOR (n:Organization)
+CREATE CONSTRAINT public_organization_id_unique IF NOT EXISTS
+FOR (n:PublicOrganization)
+REQUIRE n.id IS UNIQUE;
+
+CREATE CONSTRAINT govtech_system_id_unique IF NOT EXISTS
+FOR (n:GovTechSystem)
 REQUIRE n.id IS UNIQUE;
 
 CREATE CONSTRAINT capability_id_unique IF NOT EXISTS
-FOR (n:BusinessCapability)
+FOR (n:Capability)
 REQUIRE n.id IS UNIQUE;
 
-CREATE CONSTRAINT application_id_unique IF NOT EXISTS
-FOR (n:Application)
-REQUIRE n.id IS UNIQUE;
-
-CREATE CONSTRAINT technology_id_unique IF NOT EXISTS
-FOR (n:Technology)
+CREATE CONSTRAINT evidence_id_unique IF NOT EXISTS
+FOR (n:Evidence)
 REQUIRE n.id IS UNIQUE;
