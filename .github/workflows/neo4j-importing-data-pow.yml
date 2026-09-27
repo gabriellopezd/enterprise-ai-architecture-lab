@@ -1,0 +1,45 @@
+name: Neo4j Importing Data PoW
+
+on:
+  pull_request:
+    paths:
+      - "neo4j/04-global-govtech-data-import-pipeline/**"
+      - ".github/workflows/neo4j-importing-data-pow.yml"
+  push:
+    branches: [main]
+    paths:
+      - "neo4j/04-global-govtech-data-import-pipeline/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x neo4j/04-global-govtech-data-import-pipeline/scripts/*.sh
+
+      - name: Build and validate Neo4j import PoW
+        working-directory: neo4j/04-global-govtech-data-import-pipeline
+        run: ./scripts/run.sh
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neo4j-importing-data-pow-validation
+          path: |
+            neo4j/04-global-govtech-data-import-pipeline/evidence/runtime-validation.txt
+            neo4j/04-global-govtech-data-import-pipeline/evidence/snapshot-first.txt
+            neo4j/04-global-govtech-data-import-pipeline/evidence/snapshot-second.txt
+            neo4j/04-global-govtech-data-import-pipeline/evidence/idempotence-diff.txt
+          if-no-files-found: error
+
+      - name: Cleanup
+        if: always()
+        working-directory: neo4j/04-global-govtech-data-import-pipeline
+        run: docker compose down -v --remove-orphans
