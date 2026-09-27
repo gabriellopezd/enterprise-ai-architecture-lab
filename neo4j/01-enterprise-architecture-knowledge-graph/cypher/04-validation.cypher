@@ -1,7 +1,8 @@
-MATCH (n:Organization) RETURN count(n) AS organizations;
-MATCH (n:BusinessCapability) RETURN count(n) AS capabilities;
-MATCH (n:Application) RETURN count(n) AS applications;
-MATCH (n:Technology) RETURN count(n) AS technologies;
-MATCH ()-[r:HAS_CAPABILITY]->() RETURN count(r) AS has_capability;
-MATCH ()-[r:SUPPORTED_BY]->() RETURN count(r) AS supported_by;
-MATCH ()-[r:USES]->() RETURN count(r) AS uses;
+MATCH (n:PublicOrganization) RETURN count(n) AS organizations;
+MATCH (n:GovTechSystem) RETURN count(n) AS systems;
+MATCH (n:Capability) RETURN count(n) AS capabilities;
+MATCH (n:Evidence) RETURN count(n) AS evidence;
+MATCH ()-[r:OPERATES]->() RETURN count(r) AS operates;
+MATCH ()-[r:MAINTAINS]->() RETURN count(r) AS maintains;
+MATCH ()-[r:ENABLES]->() RETURN count(r) AS enables;
+MATCH ()-[r:DOCUMENTED_BY]->() RETURN count(r) AS documented_by;
