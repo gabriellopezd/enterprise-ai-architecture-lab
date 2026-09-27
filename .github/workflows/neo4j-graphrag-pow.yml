@@ -1,0 +1,50 @@
+name: Neo4j GraphRAG PoW
+
+on:
+  pull_request:
+    paths:
+      - "neo4j/06-global-govtech-graphrag-grounding/**"
+      - ".github/workflows/neo4j-graphrag-pow.yml"
+  push:
+    branches: [main]
+    paths:
+      - "neo4j/06-global-govtech-graphrag-grounding/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        working-directory: neo4j/06-global-govtech-graphrag-grounding
+        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Make scripts executable
+        run: chmod +x neo4j/06-global-govtech-graphrag-grounding/scripts/*.sh
+
+      - name: Build and validate GraphRAG PoW
+        working-directory: neo4j/06-global-govtech-graphrag-grounding
+        run: ./scripts/run.sh
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neo4j-graphrag-pow-validation
+          path: neo4j/06-global-govtech-graphrag-grounding/evidence/runtime-validation.txt
+          if-no-files-found: error
+
+      - name: Cleanup
+        if: always()
+        working-directory: neo4j/06-global-govtech-graphrag-grounding
+        run: docker compose down -v --remove-orphans
