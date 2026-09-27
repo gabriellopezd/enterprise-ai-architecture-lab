@@ -206,6 +206,10 @@ It does not claim:
 - production security engineering;
 - completeness of the modeled public systems.
 
+## Validation gate
+
+This PoW is considered verified only when the repository CI executes the graph end to end and reports `VALIDATION_RESULT=PASS`. Static expected values are not treated as runtime evidence.
+
 ## Claims boundary
 
 The systems and capabilities are modeled only to the extent supported by the official sources listed in this repository. The graph is an educational abstraction, not an authoritative architecture of those government platforms.
