@@ -96,13 +96,13 @@ SET e4.title = 'X-Road Technology Overview',
 
 // ORGANIZATION → SYSTEM
 MATCH (gds:PublicOrganization {id: 'ORG-001'}), (oneLogin:GovTechSystem {id: 'SYS-001'})
-MERGE (gds)-[:OPERATES]->(oneLogin);
+MERGE (gds)-[:PROVIDES]->(oneLogin);
 
 MATCH (gsa:PublicOrganization {id: 'ORG-002'}), (loginGov:GovTechSystem {id: 'SYS-002'})
 MERGE (gsa)-[:OPERATES]->(loginGov);
 
 MATCH (govtech:PublicOrganization {id: 'ORG-003'}), (singpass:GovTechSystem {id: 'SYS-003'})
-MERGE (govtech)-[:OPERATES]->(singpass);
+MERGE (govtech)-[:POWERS]->(singpass);
 
 MATCH (niis:PublicOrganization {id: 'ORG-004'}), (xroad:GovTechSystem {id: 'SYS-004'})
 MERGE (niis)-[:MAINTAINS]->(xroad);
