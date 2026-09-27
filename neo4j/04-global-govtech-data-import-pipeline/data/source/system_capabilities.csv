@@ -1,0 +1,11 @@
+system_id,capability_id,capability_name,capability_domain
+SYS-001,CAP-001,Authentication,Digital Identity
+SYS-001,CAP-002,Identity Verification,Digital Identity
+SYS-002,CAP-001,Authentication,Digital Identity
+SYS-002,CAP-002,Identity Verification,Digital Identity
+SYS-003,CAP-003,Digital Identity,Digital Identity
+SYS-003,CAP-001,Authentication,Digital Identity
+SYS-003,CAP-004,Digital Signature,Digital Trust
+SYS-003,CAP-005,Consent-Based Data Sharing,Data Exchange
+SYS-004,CAP-006,Secure Data Exchange,Interoperability
+SYS-004,CAP-007,Interoperability,Interoperability
