@@ -61,7 +61,7 @@ def main() -> int:
             app.llm.last_input[:700],
         )
         check("grounded_answer_declares_context", "Grounded from retrieved Neo4j context." in rag.answer)
-        check("grounded_answer_cites_source", "https://" in rag.answer, rag.answer)
+        check("grounded_answer_cites_source", "https://www.login.gov/about-us/" in rag.answer or "https://docs.sign-in.service.gov.uk/" in rag.answer or "https://developer.singpass.gov.sg/" in rag.answer, rag.answer)
 
         print("CONTEXT_SAMPLE_START")
         print(rag_context[:1200])
