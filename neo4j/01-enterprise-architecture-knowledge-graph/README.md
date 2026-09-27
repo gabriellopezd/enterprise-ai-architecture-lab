@@ -37,7 +37,7 @@ Official source references are documented in `sources/official-sources.md`.
 
 ```text
 (:PublicOrganization)
-       | OPERATES / MAINTAINS
+       | PROVIDES / OPERATES / POWERS / MAINTAINS
        v
 (:GovTechSystem)
        | ENABLES
@@ -171,7 +171,9 @@ PASS organizations=4
 PASS systems=4
 PASS capabilities=7
 PASS evidence=4
-PASS operates=3
+PASS provides=1
+PASS operates=1
+PASS powers=1
 PASS maintains=1
 PASS enables=10
 PASS documented_by=4
