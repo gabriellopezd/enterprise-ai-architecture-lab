@@ -208,7 +208,7 @@ It does not claim:
 
 ## Validation gate
 
-This PoW is considered verified only when the repository CI executes the graph end to end and reports `VALIDATION_RESULT=PASS`. Static expected values are not treated as runtime evidence.
+This PoW is considered verified only when the repository CI executes the graph end to end and reports `VALIDATION_RESULT=PASS`. Static expected values are not treated as runtime evidence. The CI workflow is intentionally triggered by changes under `neo4j/**`.
 
 ## Claims boundary
 
