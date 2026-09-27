@@ -1,0 +1,42 @@
+[
+  {
+    "system_id": "SYS-001",
+    "system_name": "GOV.UK One Login",
+    "jurisdiction": "United Kingdom",
+    "organization": "Government Digital Service",
+    "evidence_id": "EVID-001",
+    "source_url": "https://docs.sign-in.service.gov.uk/",
+    "evidence_text": "GOV.UK One Login lets government services sign in users, authenticate them, and prove their identity.",
+    "capabilities": ["Authentication", "Identity Verification", "Digital Identity"]
+  },
+  {
+    "system_id": "SYS-002",
+    "system_name": "Login.gov",
+    "jurisdiction": "United States",
+    "organization": "U.S. General Services Administration",
+    "evidence_id": "EVID-002",
+    "source_url": "https://www.login.gov/about-us/",
+    "evidence_text": "Login.gov provides one secure account for participating government websites and supports authentication and identity verification.",
+    "capabilities": ["Authentication", "Identity Verification"]
+  },
+  {
+    "system_id": "SYS-003",
+    "system_name": "Singpass",
+    "jurisdiction": "Singapore",
+    "organization": "Government Technology Agency of Singapore",
+    "evidence_id": "EVID-003",
+    "source_url": "https://developer.singpass.gov.sg/",
+    "evidence_text": "Singpass supports secure authentication, digital identity, consent-based sharing of verified government data through Myinfo, and secure electronic signatures through Sign with Singpass.",
+    "capabilities": ["Authentication", "Digital Identity", "Consent-Based Data Sharing", "Digital Signature"]
+  },
+  {
+    "system_id": "SYS-004",
+    "system_name": "X-Road",
+    "jurisdiction": "Cross-border / international",
+    "organization": "Nordic Institute for Interoperability Solutions",
+    "evidence_id": "EVID-004",
+    "source_url": "https://x-road.global/x-road-technology-overview",
+    "evidence_text": "X-Road is a standardized secure data exchange layer that supports confidentiality, integrity, authentication, digital signatures, and interoperability between data exchange parties.",
+    "capabilities": ["Secure Data Exchange", "Interoperability", "Authentication", "Digital Signature"]
+  }
+]
