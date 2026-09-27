@@ -1,0 +1,9 @@
+PASS organizations=1
+PASS capabilities=3
+PASS applications=4
+PASS technologies=4
+PASS has_capability=3
+PASS supported_by=4
+PASS uses=5
+PASS required_keywords=MATCH,WHERE,RETURN,MERGE,SET,LIMIT
+VALIDATION_RESULT=PASS

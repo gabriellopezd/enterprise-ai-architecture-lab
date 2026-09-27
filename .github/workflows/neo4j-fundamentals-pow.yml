@@ -1,0 +1,41 @@
+name: Neo4j Fundamentals PoW
+
+on:
+  pull_request:
+    paths:
+      - "neo4j/01-enterprise-architecture-knowledge-graph/**"
+      - ".github/workflows/neo4j-fundamentals-pow.yml"
+  push:
+    branches: [main]
+    paths:
+      - "neo4j/01-enterprise-architecture-knowledge-graph/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x neo4j/01-enterprise-architecture-knowledge-graph/scripts/*.sh
+
+      - name: Build and validate Neo4j PoW
+        working-directory: neo4j/01-enterprise-architecture-knowledge-graph
+        run: ./scripts/run.sh
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neo4j-fundamentals-pow-validation
+          path: neo4j/01-enterprise-architecture-knowledge-graph/evidence/runtime-validation.txt
+          if-no-files-found: error
+
+      - name: Cleanup
+        if: always()
+        working-directory: neo4j/01-enterprise-architecture-knowledge-graph
+        run: docker compose down -v --remove-orphans
