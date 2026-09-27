@@ -1,0 +1,44 @@
+name: Neo4j Graph Data Modeling PoW #3
+
+on:
+  pull_request:
+    paths:
+      - "neo4j/03-global-govtech-graph-data-modeling/**"
+      - ".github/workflows/neo4j-graph-data-modeling-pow.yml"
+  push:
+    branches: [main]
+    paths:
+      - "neo4j/03-global-govtech-graph-data-modeling/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x neo4j/03-global-govtech-graph-data-modeling/scripts/*.sh
+
+      - name: Build, refactor, profile and validate PoW #3
+        working-directory: neo4j/03-global-govtech-graph-data-modeling
+        run: ./scripts/run.sh
+
+      - name: Upload runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neo4j-graph-data-modeling-pow-003-evidence
+          path: |
+            neo4j/03-global-govtech-graph-data-modeling/evidence/runtime-validation.txt
+            neo4j/03-global-govtech-graph-data-modeling/evidence/profile-before.txt
+            neo4j/03-global-govtech-graph-data-modeling/evidence/profile-after.txt
+          if-no-files-found: error
+
+      - name: Cleanup
+        if: always()
+        working-directory: neo4j/03-global-govtech-graph-data-modeling
+        run: docker compose down -v --remove-orphans

@@ -1,0 +1,12 @@
+MATCH (n:PublicOrganization) RETURN count(n) AS organizations;
+MATCH (n:GovTechSystem) RETURN count(n) AS systems;
+MATCH (n:Capability) RETURN count(n) AS capabilities;
+MATCH (n:Evidence) RETURN count(n) AS evidence;
+MATCH (n:CapabilityDomain) RETURN count(n) AS capability_domains;
+MATCH (n:CapabilityAssertion) RETURN count(n) AS capability_assertions;
+MATCH ()-[r:ENABLES]->() RETURN count(r) AS enables;
+MATCH ()-[r:DOCUMENTED_BY]->() RETURN count(r) AS documented_by;
+MATCH ()-[r:IN_DOMAIN]->() RETURN count(r) AS in_domain;
+MATCH ()-[r:HAS_CAPABILITY_CLAIM]->() RETURN count(r) AS has_capability_claim;
+MATCH ()-[r:ASSERTS_CAPABILITY]->() RETURN count(r) AS asserts_capability;
+MATCH ()-[r:SUPPORTED_BY]->() RETURN count(r) AS supported_by;
