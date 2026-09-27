@@ -1,12 +1,35 @@
 # Enterprise AI Architecture Lab
 
-Public Proof-of-Work laboratory focused on building evidence toward the professional profile of an **Enterprise AI Architect / Digital Transformation Architect**.
+Public evidence laboratory focused on building verifiable capability toward the professional profile of an **Enterprise AI Architect / Digital Transformation Architect**.
 
-The purpose of this repository is not to accumulate course exercises. Each Proof of Work must demonstrate how a technical concept connects to enterprise architecture, digital transformation, AI-enabled operating models and measurable organizational outcomes.
+The repository is intentionally organized around evidence, not course completion badges. Technical learning, credentials and portfolio capstones are different objects with different claim boundaries.
+
+## Repository architecture
+
+```text
+enterprise-ai-architecture-lab/
+├── neo4j/
+│   ├── README.md
+│   ├── 01-enterprise-architecture-knowledge-graph/
+│   ├── 03-global-govtech-graph-data-modeling/
+│   ├── 04-global-govtech-data-import-pipeline/
+│   ├── 05-global-govtech-python-driver/
+│   └── 06-global-govtech-graphrag-grounded-retrieval/
+├── intellecto-proof-of-work/
+│   ├── README.md
+│   ├── STANDARD.md
+│   └── 001-neo4j-certified-professional/
+├── scripts/
+└── .github/workflows/
+```
+
+Technology/vendor-specific implementation evidence belongs in its technical area. Cross-milestone portfolio capstones belong in `intellecto-proof-of-work/`.
+
+A new certification pathway does **not** continue the course numbering of a previous vendor pathway.
 
 ## Professional focus
 
-This lab develops evidence across the intersection of:
+This lab develops evidence across:
 
 - Enterprise Architecture
 - Digital Transformation
@@ -23,92 +46,80 @@ This lab develops evidence across the intersection of:
 - Evidence-Based Delivery
 - GovTech and Digital Public Infrastructure
 
-## Architecture domains
-
-Each Proof of Work should explain its relevance across the architecture domains that apply.
-
-| Domain | Questions each PoW should help answer |
-| --- | --- |
-| Business Architecture | What business capability, process, stakeholder or outcome is affected? |
-| Data & Knowledge Architecture | What information, data relationships, semantics or knowledge structures are required? |
-| Application Architecture | Which applications or services support the capability? |
-| Integration Architecture | How do systems, data and services interact? |
-| Technology Architecture | Which platforms, runtimes, infrastructure or technologies enable the solution? |
-| AI Architecture | Where could AI, agents, retrieval, reasoning or automation create value? |
-| Cloud & Platform Architecture | How can the capability be deployed, operated and scaled? |
-| Security Architecture | What trust, access, privacy, resilience or threat considerations apply? |
-| Governance & Risk | What decisions, controls, ownership and evidence are needed? |
-| Transformation Architecture | How does the technology enable change in capabilities, processes, operating models or outcomes? |
-| Delivery & Operations | How is the solution tested, validated, monitored and continuously improved? |
-
-Not every Proof of Work implements every domain. The README for each artifact distinguishes between **implemented scope**, **architectural relevance** and **future extensions**.
+Not every Proof of Work implements every domain. Each artifact must separate **implemented scope**, **architectural relevance**, **future extension** and **claims boundary**.
 
 ## Evidence model
 
 ```text
-Learn
-  ↓
-Understand the problem
-  ↓
-Research public evidence
-  ↓
-Model the architecture
-  ↓
-Build a focused Proof of Work
-  ↓
-Validate it
-  ↓
-Document architectural implications
-  ↓
-Reuse the evidence for career, portfolio and future learning
+Learning Track
+      ↓
+Technical learning
+      ↓
+Focused Proofs of Work
+      ↓
+Runtime / deterministic validation
+      ↓
+Issuer credential
+      ↓
+Curated IPOW capstone
+      ↓
+Career / portfolio / content reuse
 ```
+
+A credential is issuer-backed evidence. A PoW is implementation evidence. An IPOW composes existing evidence without rewriting it.
+
+## Neo4j track
+
+The Neo4j track currently contains six verified learning milestones.
+
+| PoW | Milestone | Capability progression | Status |
+| --- | --- | --- | --- |
+| POW-NEO4J-001 | Neo4j Fundamentals | represent | VERIFIED |
+| POW-NEO4J-002 | Cypher Fundamentals | operate | VERIFIED |
+| POW-NEO4J-003 | Graph Data Modeling Fundamentals | design / refactor | VERIFIED |
+| POW-NEO4J-004 | Importing Data Fundamentals | ingest | VERIFIED |
+| POW-NEO4J-005 | Using Neo4j with Python | integrate | VERIFIED |
+| POW-NEO4J-006 | Neo4j & GenerativeAI Fundamentals | ground | VERIFIED |
+
+See [neo4j/README.md](./neo4j/README.md) for immutable paths and commits.
+
+PoW #1 and PoW #2 share a historical public path but remain distinct through immutable commit identities. The repository preserves that history instead of rewriting it.
+
+## INTELLECTO Proof of Work
+
+The capstone layer follows the reusable [INTELLECTO Proof-of-Work Standard](./intellecto-proof-of-work/STANDARD.md).
+
+Current capstone:
+
+- **IPOW-001 — Neo4j Certified Professional** — `BUILD_PENDING`
+
+It references the six verified Neo4j PoWs and the separately governed credential evidence. It is not a seventh course and does not duplicate the underlying code.
 
 ## Public / private boundary
 
-Public PoWs should use a **global GovTech framing whenever the subject permits**, using real publicly documented systems and official sources.
-
 This repository contains only:
+
 - public-safe architectural patterns;
 - public official-source evidence or synthetic data where needed;
-- intentionally selected Proofs of Work;
-- learning evidence suitable for a professional portfolio.
+- intentionally selected technical Proofs of Work;
+- credential references safe for public portfolio use;
+- claims proportional to available evidence.
 
-It does not contain proprietary product architectures, internal metamodels, confidential business logic, customer information, employer or institutional internals, credentials or private datasets.
+It does not contain proprietary product architectures, internal metamodels, confidential business logic, customer information, employer or institutional internals, secrets or private datasets.
 
-## Current Proofs of Work
+## Validation
 
-### 01 — Global GovTech Systems Knowledge Graph
+Repository-level validation includes:
 
-A foundational Neo4j / Cypher exercise representing real public digital systems as a graph of:
+- milestone-specific runtime or deterministic validation where applicable;
+- immutable evidence references;
+- explicit claims/privacy boundaries;
+- IPOW manifest validation through GitHub Actions.
 
-```text
-PublicOrganization
-→ GovTechSystem
-→ Capability
-→ Official Evidence
-```
-
-Current examples include GOV.UK One Login, Login.gov, Singpass and X-Road.
-
-Path:
-
-`neo4j/01-enterprise-architecture-knowledge-graph/`
+Static documentation alone is not treated as proof of runtime behavior.
 
 ## Progression
 
-Future Proofs of Work may progressively extend the lab into:
+Future evidence may extend into cloud, AI transformation, agentic architectures, interoperability, security, governance, platform architecture and other relevant capability areas.
 
-- graph data modeling;
-- digital public infrastructure;
-- architecture dependency analysis;
-- data and knowledge architecture;
-- interoperability and API architecture;
-- cloud and platform architecture;
-- AI and agentic architectures;
-- GraphRAG and enterprise knowledge;
-- security and governance;
-- architecture decision records;
-- observability and operational resilience;
-- digital transformation scenarios.
-
-These are progression targets, not claims of current implementation.
+Those are progression directions, not claims of current implementation.

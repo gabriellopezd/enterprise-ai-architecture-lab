@@ -1,0 +1,29 @@
+name: IPOW Validation
+
+on:
+  pull_request:
+    paths:
+      - "intellecto-proof-of-work/**"
+      - "neo4j/**"
+      - "scripts/validate-ipow.js"
+      - ".github/workflows/ipow-validation.yml"
+  push:
+    branches: [main]
+    paths:
+      - "intellecto-proof-of-work/**"
+      - "neo4j/**"
+      - "scripts/validate-ipow.js"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ipow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate INTELLECTO Proof-of-Work architecture
+        run: node scripts/validate-ipow.js
