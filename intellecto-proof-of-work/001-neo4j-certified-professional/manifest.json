@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "IPOW-001",
+  "title": "Neo4j Certified Professional",
+  "status": "BUILD_PENDING",
+  "owner": "Gabriel Lopez",
+  "brand": "INTELLECTO",
+  "credential_ref": "CERT-NEO4J-PRO-001",
+  "credential_evidence": {
+    "issuer": "Neo4j",
+    "program": "Neo4j GraphAcademy",
+    "title": "Neo4j Certified Professional",
+    "issued_on": "2026-09-27",
+    "verification_id": "ed268523-3c03-434c-b269-c03c8ac41807"
+  },
+  "supporting_pow": [
+    {
+      "id": "POW-NEO4J-001",
+      "path": "neo4j/01-enterprise-architecture-knowledge-graph",
+      "immutable_commit": "c9a08859be1e83ea265ac1b6d4a0d2785e00bc53"
+    },
+    {
+      "id": "POW-NEO4J-002",
+      "path": "neo4j/01-enterprise-architecture-knowledge-graph",
+      "immutable_commit": "994bb250380a9d2b5b278d45edba1f6aca621db5"
+    },
+    {
+      "id": "POW-NEO4J-003",
+      "path": "neo4j/03-global-govtech-graph-data-modeling",
+      "immutable_commit": "0a94ab182bdad4cd98841e72cd2296083a0bf9f4"
+    },
+    {
+      "id": "POW-NEO4J-004",
+      "path": "neo4j/04-global-govtech-data-import-pipeline",
+      "immutable_commit": "b9bd10706f61f2d5a9aa0854bde2c619dd71766f"
+    },
+    {
+      "id": "POW-NEO4J-005",
+      "path": "neo4j/05-global-govtech-python-driver",
+      "immutable_commit": "683dcd995f291c59bec438bef7a07cd3df60ced2"
+    },
+    {
+      "id": "POW-NEO4J-006",
+      "path": "neo4j/06-global-govtech-graphrag-grounded-retrieval",
+      "immutable_commit": "b9fa1de8824d0e935e0cfa4e7969e91040677223"
+    }
+  ],
+  "claims_boundary": "Foundational Neo4j graph, Cypher, modeling/refactoring, ingestion, Python integration and GraphRAG grounding evidence; no production-scale, production-administration or production-AI readiness claim.",
+  "privacy": "PUBLIC_SAFE",
+  "live_experience": null,
+  "article": null
+}
