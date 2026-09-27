@@ -7,6 +7,12 @@ It extends the learning lineage of PoW #1 (Neo4j Fundamentals), PoW #2 (Cypher F
 
 > **Public-safe boundary:** this artifact uses only public, official-source-backed information about globally known digital-government systems. It does not represent ArquiFácil, AEther, Intellecto, MJD, an employer environment, customer data, private architecture, proprietary prompts, or confidential information.
 
+## Course credential
+
+- Neo4j GraphAcademy: **Importing Data Fundamentals**
+- Verification ID: `8a26786e-0932-4e3f-b2f4-4e67392c42fd`
+- Credential: https://graphacademy.neo4j.com/c/8a26786e-0932-4e3f-b2f4-4e67392c42fd/
+
 ## Architecture question
 
 > How can denormalized, official-source-backed CSV data be transformed into a canonical Neo4j graph without allowing the source file structure to dictate the target model?
@@ -93,6 +99,10 @@ PoW #4 passes only when:
 - official evidence URLs remain attached to the correct systems;
 - a second identical import leaves graph cardinalities unchanged;
 - CI emits `VALIDATION_RESULT=PASS`.
+
+## Runtime evidence
+
+The successful CI run `36348131374` returned `VALIDATION_RESULT=PASS`, including an explicit `PASS idempotent_rerun=true`. Persistent evidence is recorded in `evidence/ci-validation-2026-09-27.md`.
 
 ## Claims boundary
 
