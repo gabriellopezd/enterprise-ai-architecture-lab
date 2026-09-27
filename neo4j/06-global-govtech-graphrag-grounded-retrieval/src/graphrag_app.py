@@ -42,7 +42,7 @@ class DeterministicKeywordEmbedder(Embedder):
 
 class DeterministicGroundedLLM(LLMInterface):
     KNOWN_SYSTEMS = ("GOV.UK One Login", "Login.gov", "Singpass", "X-Road")
-    URL_PATTERN = re.compile(r"https://[^\\s'\\\"},]+")
+    URL_PATTERN = re.compile(r"https://[^\s\'\"},]+")
 
     def __init__(self) -> None:
         super().__init__(model_name="deterministic-grounded-test-double")
