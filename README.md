@@ -109,7 +109,7 @@ This SENA learning milestone focuses on the controlled loop from problem/prompt 
 
 | PoW | Milestone | Capability progression | Status |
 | --- | --- | --- | --- |
-| POW-AICODING-001 | AI-Assisted Python Logic & Validation | understand → generate/refine → inspect → execute → test → preserve | IMPLEMENTATION_IN_PROGRESS |
+| POW-AICODING-001 | AI-Assisted Python Logic & Validation | understand → generate/refine → inspect → execute → test → preserve | AWAITING_CREDENTIAL |
 
 See [ai-assisted-coding/README.md](./ai-assisted-coding/README.md).
 
