@@ -4,7 +4,7 @@ This directory contains public, sanitized technical evidence for learning milest
 
 | PoW | Learning milestone | Public path | Status |
 | --- | --- | --- | --- |
-| POW-AICODING-001 | SENA — Generación de códigos de software con inteligencia artificial | `ai-assisted-coding/01-python-logic-validation` | IMPLEMENTATION_IN_PROGRESS |
+| POW-AICODING-001 | SENA — Generación de códigos de software con inteligencia artificial | `ai-assisted-coding/01-python-logic-validation` | AWAITING_CREDENTIAL |
 
 ## Capability progression
 
