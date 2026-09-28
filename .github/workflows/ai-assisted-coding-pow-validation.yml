@@ -1,0 +1,38 @@
+name: AI-Assisted Coding PoW Validation
+
+on:
+  pull_request:
+    paths:
+      - "ai-assisted-coding/01-python-logic-validation/**"
+      - ".github/workflows/ai-assisted-coding-pow-validation.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "ai-assisted-coding/01-python-logic-validation/**"
+      - ".github/workflows/ai-assisted-coding-pow-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-assisted-coding/01-python-logic-validation
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run deterministic validation
+        run: |
+          chmod +x scripts/validate.sh
+          ./scripts/validate.sh
