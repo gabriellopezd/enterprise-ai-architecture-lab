@@ -19,3 +19,5 @@ understand problem
 ```
 
 Academic submissions, Zajuna records, personal data and issuer documents remain outside this public repository.
+
+Validation gate: the milestone is not merged until its pull-request runtime validation reports `VALIDATION_RESULT=PASS`.
