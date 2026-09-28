@@ -1,0 +1,36 @@
+name: Docker PoW Validation
+
+on:
+  pull_request:
+    paths:
+      - "docker/01-reproducible-containerized-application/**"
+      - ".github/workflows/docker-pow-validation.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "docker/01-reproducible-containerized-application/**"
+      - ".github/workflows/docker-pow-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docker/01-reproducible-containerized-application
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Docker version
+        run: docker --version
+
+      - name: Run deterministic validation
+        run: |
+          chmod +x scripts/validate.sh
+          ./scripts/validate.sh
