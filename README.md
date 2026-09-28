@@ -18,6 +18,9 @@ enterprise-ai-architecture-lab/
 ├── docker/
 │   ├── README.md
 │   └── 01-reproducible-containerized-application/
+├── ai-assisted-coding/
+│   ├── README.md
+│   └── 01-python-logic-validation/
 ├── intellecto-proof-of-work/
 │   ├── README.md
 │   ├── STANDARD.md
@@ -99,6 +102,18 @@ The Docker evidence track starts with a focused SENA learning milestone:
 See [docker/README.md](./docker/README.md).
 
 The public implementation is designed to be reproducible and independently validated. The associated SENA credential remains pending and is not claimed as verified until issuer evidence exists.
+
+## AI-assisted coding track
+
+This SENA learning milestone focuses on the controlled loop from problem/prompt to code, human review, execution and deterministic validation.
+
+| PoW | Milestone | Capability progression | Status |
+| --- | --- | --- | --- |
+| POW-AICODING-001 | AI-Assisted Python Logic & Validation | understand → generate/refine → inspect → execute → test → preserve | AWAITING_CREDENTIAL |
+
+See [ai-assisted-coding/README.md](./ai-assisted-coding/README.md).
+
+The public artifact is a sanitized, testable refactoring of small learning exercises. Academic submissions and platform records remain private.
 
 ## INTELLECTO Proof of Work
 
