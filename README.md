@@ -15,6 +15,9 @@ enterprise-ai-architecture-lab/
 │   ├── 04-global-govtech-data-import-pipeline/
 │   ├── 05-global-govtech-python-driver/
 │   └── 06-global-govtech-graphrag-grounded-retrieval/
+├── docker/
+│   ├── README.md
+│   └── 01-reproducible-containerized-application/
 ├── intellecto-proof-of-work/
 │   ├── README.md
 │   ├── STANDARD.md
@@ -84,6 +87,18 @@ The Neo4j track currently contains six verified learning milestones.
 See [neo4j/README.md](./neo4j/README.md) for immutable paths and commits.
 
 PoW #1 and PoW #2 share a historical public path but remain distinct through immutable commit identities. The repository preserves that history instead of rewriting it.
+
+## Docker track
+
+The Docker evidence track starts with a focused SENA learning milestone:
+
+| PoW | Milestone | Capability progression | Status |
+| --- | --- | --- | --- |
+| POW-DOCKER-001 | Reproducible Containerized Application | build → run → validate → modify → rebuild → revalidate | AWAITING_CREDENTIAL |
+
+See [docker/README.md](./docker/README.md).
+
+The public implementation is designed to be reproducible and independently validated. The associated SENA credential remains pending and is not claimed as verified until issuer evidence exists.
 
 ## INTELLECTO Proof of Work
 
