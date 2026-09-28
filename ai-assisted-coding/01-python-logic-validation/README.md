@@ -70,6 +70,8 @@ Expected final line:
 VALIDATION_RESULT=PASS
 ```
 
+Persistent validation record: [evidence/ci-validation-2026-09-27.md](./evidence/ci-validation-2026-09-27.md).
+
 ## What the validation proves
 
 The deterministic validation checks:
