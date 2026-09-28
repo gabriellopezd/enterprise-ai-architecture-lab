@@ -1,6 +1,6 @@
 # POW-AICODING-001 — AI-Assisted Python Logic & Validation
 
-**Status:** IMPLEMENTATION_IN_PROGRESS  
+**Status:** AWAITING_CREDENTIAL  
 **Learning context:** SENA — *Generación de códigos de software con inteligencia artificial* (3606124)  
 **Evidence type:** sanitized implementation + deterministic validation  
 **Public/private classification:** PUBLIC_SAFE_SYNTHETIC
